@@ -63,7 +63,8 @@ td.c.g{background:var(--g)}td.c.y{background:var(--y)}
   td.c{height:34px}
   .sum td.c{font-size:11px}
   .pens{flex-wrap:nowrap;gap:6px}
-  .pen{flex:1;justify-content:center;padding:0 8px;gap:6px}
+  .pen{flex:1 1 auto;justify-content:center;padding:0 6px;gap:5px;font-size:14px;white-space:nowrap}
+  .pen i{width:14px;height:14px}
 }
 @media(prefers-reduced-motion:reduce){td.c{transition:none}}
 .login button:disabled{opacity:.5}
