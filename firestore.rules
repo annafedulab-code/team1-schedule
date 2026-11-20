@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function valid() {
+      return request.resource.data.keys().hasOnly(['cells']) &&
+        request.resource.data.cells is map &&
+        request.resource.data.cells.size() <= 98;
+    }
+    match /team1_nov2026/{id} {
+      allow get, list: if true;
+      allow create, update: if id in ['m1','m2','m3','m4','m5','m6'] && valid();
+      allow delete: if false;
+    }
+    match /{everything=**} {
+      allow read, write: if false;
+    }
+  }
+}

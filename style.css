@@ -1,0 +1,57 @@
+/* VOICE: 조용하고 실용적인 팀 도구, 바로 칠하고 바로 확인
+   IDEA: 회의실 앞에 붙여 둔 종이 타임테이블, 형광펜으로 칠하는 느낌
+   PICTURE: 요일×시간 격자 자체가 화면의 주인공
+   COLOUR and TYPE: 흰 바탕, 잉크 네이비, 녹색(온+오프)·노랑(온라인만) 형광펜 / Noto Sans KR
+   LAYOUT: 상단 제목 → 로그인 또는 탭 → 격자, 모바일 우선 */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#0f1724);--ink:light-dark(#10223a,#e8eef7);--sub:light-dark(#5b6b80,#9fb0c6);
+--line:light-dark(#e3e8ef,#263349);--card:light-dark(#f6f8fb,#162133);
+--g:#3fae5a;--gs:light-dark(#d7f0dd,#1e4a2a);--y:#f2c230;--ys:light-dark(#fdf1c7,#4d3f12);--acc:#2f6fe4}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Noto Sans KR",system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(20px,4vw,40px) max(4vw,14px);max-width:1100px;margin:0 auto}
+h1{font-size:clamp(28px,6vw,40px);line-height:1.1;margin:0 0 4px;font-weight:800;text-wrap:balance}
+.lead{color:var(--sub);margin:0 0 18px;font-size:15px}
+button,select,input{font:inherit;color:inherit}
+.btn{min-height:44px;padding:0 16px;border-radius:10px;border:1px solid var(--line);background:var(--card);cursor:pointer;font-weight:600}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn:focus-visible,select:focus-visible,input:focus-visible,td.c:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.login{max-width:420px;display:grid;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.login label{font-weight:600;font-size:14px}
+.login select,.login input{min-height:48px;border-radius:10px;border:1px solid var(--line);background:var(--bg);padding:0 12px;font-size:16px;width:100%}
+.err{color:#d83a3a;font-size:14px;min-height:1.2em;margin:0}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.who{font-weight:700;margin-right:auto}
+.tabs{display:flex;gap:6px;margin-bottom:12px}
+.tabs button{flex:1}
+.tabs button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pens{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.pen{display:flex;align-items:center;gap:8px}
+.pen i{width:18px;height:18px;border-radius:50%;display:inline-block;border:1px solid var(--line)}
+.pen[aria-pressed=true]{border:2px solid var(--ink)}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:520px;user-select:none;-webkit-user-select:none;touch-action:pan-y}
+th,td{border:1px solid var(--line);text-align:center;font-size:13px;padding:0}
+thead th{position:sticky;top:0;background:var(--card);padding:6px 2px;font-weight:700;line-height:1.25}
+thead th small{display:block;font-weight:500;color:var(--sub)}
+th.t{width:52px;background:var(--card);font-weight:500;color:var(--sub);white-space:nowrap;position:sticky;left:0}
+td.c{height:38px;cursor:pointer;transition:background .12s}
+td.off{background:repeating-linear-gradient(45deg,var(--card) 0 6px,var(--line) 6px 8px);cursor:not-allowed}
+td.c.g{background:var(--g)}td.c.y{background:var(--y)}
+.sum td.c{cursor:pointer;font-weight:700;font-size:12px}
+.sum td.c.full{outline:2px solid var(--ink);outline-offset:-3px}
+.hint{font-size:13px;color:var(--sub);margin:8px 0 0}
+.status{font-size:13px;color:var(--sub)}
+.panel{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.panel h3{margin:0 0 8px;font-size:17px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{padding:3px 10px;border-radius:999px;font-size:13px;border:1px solid var(--line);background:var(--bg)}
+.chip.g{background:var(--gs)}.chip.y{background:var(--ys)}
+.best li{margin:4px 0}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--sub);margin:8px 0}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:4px}
+.members{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.hidden{display:none!important}
+@media(prefers-reduced-motion:reduce){td.c{transition:none}}
+.login button:disabled{opacity:.5}
