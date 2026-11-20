@@ -31,7 +31,7 @@ button,select,input{font:inherit;color:inherit}
 .pen i{width:18px;height:18px;border-radius:50%;display:inline-block;border:1px solid var(--line)}
 .pen[aria-pressed=true]{border:2px solid var(--ink)}
 .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px}
-table{border-collapse:collapse;width:100%;min-width:520px;user-select:none;-webkit-user-select:none;touch-action:pan-y}
+table{border-collapse:collapse;width:100%;table-layout:fixed;user-select:none;-webkit-user-select:none;touch-action:pan-y}
 th,td{border:1px solid var(--line);text-align:center;font-size:13px;padding:0}
 thead th{position:sticky;top:0;background:var(--card);padding:6px 2px;font-weight:700;line-height:1.25}
 thead th small{display:block;font-weight:500;color:var(--sub)}
@@ -53,5 +53,17 @@ td.c.g{background:var(--g)}td.c.y{background:var(--y)}
 .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:4px}
 .members{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
 .hidden{display:none!important}
+/* 휴대폰: 6일이 가로 한 화면에 모두 보이도록 칸·글자 축소 */
+@media(max-width:560px){
+  .band{padding-inline:10px}
+  th,td{font-size:11px}
+  thead th{padding:5px 0;font-size:12px}
+  thead th small{font-size:10px}
+  th.t{width:40px;font-size:11px}
+  td.c{height:34px}
+  .sum td.c{font-size:11px}
+  .pens{flex-wrap:nowrap;gap:6px}
+  .pen{flex:1;justify-content:center;padding:0 8px;gap:6px}
+}
 @media(prefers-reduced-motion:reduce){td.c{transition:none}}
 .login button:disabled{opacity:.5}
